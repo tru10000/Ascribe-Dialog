@@ -549,13 +549,23 @@ var AscDialog = new Class({
 		}
 		
 		// customize the size of the this.pop based on the contents
-		var poptblsize = this.poptbl.getSize();
-		
-		this.pop.setStyle('height', poptblsize.y);
-		this.pop.setStyle('width', poptblsize.x);
+		var poptblsize = this.poptbl.measure(function(){
+		    return this.getSize();
+		});
+		var pophw = {
+			'height': poptblsize.y,
+			'width': poptblsize.x
+		}
+		if (this.options.useArrows) {
+			pophw.height += this.arrow_sizes.n + this.arrow_sizes.s
+			pophw.width += this.arrow_sizes.w + this.arrow_sizes.e
+		}
+		this.pop.setStyles(pophw);
 			
-		this.popsize = this.pop.getSize();
-
+		this.popsize = this.pop.measure(function(){
+		    return this.getSize();
+		});
+		
 		if (width && (this.popsize.x < width)) {
 			this.popsize.x = width;
 		}
