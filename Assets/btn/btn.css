@@ -1,0 +1,94 @@
+a.form, a.form-down {
+	background:transparent none no-repeat scroll right bottom;
+	cursor:pointer;
+	display: -moz-inline-stack; /* -moz! */
+	display: inline-block; 
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	line-height:1em;
+	overflow:visible !important;
+	text-align:center;
+	text-decoration:none;
+	vertical-align:bottom;
+	color:#000 !important;
+	font-size:100%;
+	padding-top:7px;
+}
+a.form span, a.form-down span {
+	background:transparent none no-repeat scroll left bottom;
+	display:block;
+	overflow:visible !important;
+	text-align:center;
+	vertical-align:bottom;
+	margin-right:7px;
+}
+a.form span span, a.form-down span span {
+	background:transparent none no-repeat scroll right top;
+	display:block;
+	border:0pt none;
+	overflow:visible !important;
+	position:relative;
+	vertical-align:bottom;
+	margin-right:-7px;
+	top:-7px;
+}
+a.form span span span, a.form-down span span span {
+	display:block;
+	background:transparent none no-repeat scroll left top;
+	overflow:visible !important;
+	position:static;
+	white-space:nowrap;
+	vertical-align:bottom;
+	margin:0pt 7px 0pt 0pt;
+	padding:0.5em 0.8em 0.2em 1.1em;
+}
+
+
+a.form {
+	background-image:url(out_se.gif);
+}
+a.form span {
+	background-image:url(out_sw.gif);
+}
+a.form span span {
+	background-image:url(out_ne.gif);
+}
+a.form span span span {
+	background-image:url(out_nw.gif);
+}
+
+a.form:hover {
+	background-image:url(over_se.gif);
+	color:#000 !important;
+}
+a.form:hover span {
+	background-image:url(over_sw.gif);
+}
+a.form:hover span span {
+	background-image:url(over_ne.gif);
+}
+a.form:hover span span span {
+	background-image:url(over_nw.gif);
+}
+
+a.form span span span img, a.form-down span span span img { margin-right: 5px; }
+a.form span span span img { filter:alpha(opacity=75);-moz-opacity:.75;opacity:.75; }
+a.form:hover span span span img { filter:alpha(opacity=100);-moz-opacity:1;opacity:1; }
+a.form-down span span span img { filter:alpha(opacity=45);-moz-opacity:.45;opacity:.45; }
+
+
+a.form-down {
+	background-image:url(down_se.gif);
+	color: #D4D4D4 !important;
+}
+a.form-down span {
+	background-image:url(down_sw.gif);
+}
+a.form-down span span {
+	background-image:url(down_ne.gif);
+}	
+a.form-down span span span {
+	background-image:url(down_nw.gif);
+}

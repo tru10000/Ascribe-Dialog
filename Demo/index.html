@@ -1,0 +1,326 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+ <HEAD>
+  <TITLE> Ascribe Dialog </TITLE>
+	<link rel=stylesheet href="demo.css">
+	<link rel=stylesheet href="../Assets/main.css">
+	<!--[if lte IE 6]>
+	<link rel=stylesheet href="../Assets/main-ie6.css">
+	<![endif]-->
+ </HEAD>
+
+ <BODY>
+
+<div id="container">
+
+
+	<H1>Ascribe Dialog</H1>
+	<h2 class="desc">This javascript class allows you to add an in-browser DHTML popup, tooltip or dialog (modal or non-modal) to your page.</h2>
+
+	<H2>Fly or fade in</H2>
+	<p>Using the <A HREF="http://www.mootools.net/">MooTools JavaScript framework</A>, dialogs are animated to either <span id="flytt" class="tip"><B>fly in</B></span> or <span id="fadett" class="tip"><B>fade in</B></span>.
+	
+	<div id="modal_sect">
+
+		<H2>Make it modal</H2>
+	
+		<P>You can set the dialog to be <A target="_blank" HREF="http://en.wikipedia.org/wiki/Modal_window">modal</A>. In modal mode, the mask is created, the size of which is updated upon window resize. Mask opacity and color can be set in the options.</p>
+		
+		<h3>Click these buttons to test the modal dialogs</h3>
+		
+		<table class="modals">
+			<tr>
+				<td>
+					<input type="button" id="test_modal" value="Modal Dialog">
+				</td>
+				<td>
+					<input type="button" id="test_modal_alert" value="Modal Alert Dialog">
+				</td>
+				<td>
+					<input type="button" id="test_modal_confirm" value="Modal Confirm Dialog">
+				</td>
+			</tr>
+		</table>
+	
+		<p class='ctr'>
+		<br>
+		<select><option>SELECT element will be hidden in IE</select>
+		</p>
+	
+		<P>The mask is normally created with a div but for Internet Explorer it uses an IFRAME to cover over a SELECT form element (notice the SELECT tag below as an example). I don't know how to set the color of the IFRAME in IE. Perhaps the IFRAME needs to reference an actual SRC? I'm open to suggestions. I'm also having trouble getting IE to respond to <B>ESC</B> onkeyup in the window to hide the dialog.</p>
+	
+		<h4>Code example</h4>
+		<pre>var modal = new AscModal('modal dialog text goes here', 'n');
+$('test_modal').addEvent('click', function(e) { 
+	if(e) e = new Event(e).stop();
+	modal.show();
+});</pre>
+	
+	</div>
+
+
+	<H2>Use it as a tooltip with arrows</H2>
+	<p class="alert">Arrows are incomaptible with IE6 and Opera.</p>
+
+	<div class="demobox" id="tip_example">Mouseover this. Tip will fly in from which ever side of the element has more visible space and fade upon mouseleave.</div>
+	<p class='ctr'>
+	<select><option>SELECT element will be hidden in IE</select>
+	</p>
+
+	<h4>Code example</h4>
+	<pre>var tooltip1 = new AscTip($('tip_example'), 'Tooltip text');</pre>
+	
+	<h3>Mouseover the boxes below to test multiple tooltips for fine-tuned targeting when the targeted object is smaller than the tooltip</h3>
+	<div id="lotsatips">
+		<div class="box" id="tt1"></div>
+		<div class="box" id="tt2"></div>
+		<div class="box" id="tt3"></div>
+		<div class="box" id="tt4"></div>
+		<div class="box" id="tt5"></div>
+		<div class="box" id="tt6"></div>
+		<div class="box" id="tt7"></div>
+		<div class="box" id="tt8"></div>
+		<div class="box" id="tt9"></div>
+		<div class="box" id="tt10"></div>
+		<div class="box" id="tt11"></div>
+		<div class="box" id="tt12"></div>
+		<div class="clr"></div>
+	</div>
+
+	<H2>Targeting system</H2>
+	<P>You can target the placement of the popup to the <B>browser window</B> or to a particular <B>element</B> on the page. Plus you can easily target where you want the popup to appear in relation to that element or the window.</p> <p><i>The modal example above targets the center of the window (no matter how far down the page is scrolled).</i></p>
+
+	<div id="democnt"><div id="smplbox"></div></div>	
+
+	<H3>Change any of these settings to test the class</H3>
+	<div id="shbtnrow">
+		<input type="button" id="show_popup" value="Show Popup">
+		<input type="button" id="hide_popup" value="Hide Popup">
+	</div>
+
+
+	<TABLE id="shsettings" align="center">
+	<TR>
+		<th></th>
+		<th>show start</th>
+		<th>show end</th>
+		<th>hide end</th>
+	</TR>
+	<TR>
+		<TD><B>Transition</B></TD>
+		<TD>
+			<select name="pop_ss_active" id="pop_ss_active" size="1">
+				<option value="0">Inactive
+				<option value="1" selected>Active
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_show_trans" id="pop_show_trans" size="1">
+				<option value="fly" selected>Fly
+				<option value="fade">Fade
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_hide_trans" id="pop_hide_trans" size="1">
+				<option value="fly" selected>Fly
+				<option value="fade">Fade
+			</select>
+		</TD>
+	</TR>
+	<TR>
+		<TD><B>Target</B></TD>
+		<TD>
+			<select name="pop_ss_target" id="pop_ss_target" size="1">
+				<option value="window">Window
+				<option value="el" selected>Sample Element
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_se_target" id="pop_se_target" size="1">
+				<option value="window">Window
+				<option value="el" selected>Sample Element
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_he_target" id="pop_he_target" size="1">
+				<option value="window">Window
+				<option value="el" selected>Sample Element
+			</select>
+		</TD>
+	</TR>
+	<TR>
+		<TD><B>Inside/Outside</B></TD>
+		<TD>
+			<select name="pop_ss_io" id="pop_ss_io" size="1">
+				<option value="-1">Inside (-1)
+				<option value="1" selected>Outside (1)
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_se_io" id="pop_se_io" size="1">
+				<option value="-1">Inside (-1)
+				<option value="1" selected>Outside (1)
+			</select>
+		</TD>
+		<TD>
+			<select name="pop_he_io" id="pop_he_io" size="1">
+				<option value="-1">Inside (-1)
+				<option value="1" selected>Outside (1)
+			</select>
+		</TD>
+	</TR>
+	<TR>
+		<TD><B>Align</B></TD>
+		<TD>
+			<select name="pop_ss_align_inside" id="pop_ss_align_inside" size="1" style="display:none;">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="e">east
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="w">west
+				<option value="c">center
+			</select>
+
+			<select name="pop_ss_align_outside" id="pop_ss_align_outside" size="1">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="en">eastnorth
+				<option value="e">east
+				<option value="es">eastsouth
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="ws">westsouth
+				<option value="w">west
+				<option value="wn" selected>westnorth
+			</select>
+		
+		</TD>
+		<TD>
+			<select name="pop_se_align_inside" id="pop_se_align_inside" size="1" style="display:none;">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="e">east
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="w">west
+				<option value="c">center
+			</select>
+
+			<select name="pop_se_align_outside" id="pop_se_align_outside" size="1">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="en">eastnorth
+				<option value="e">east
+				<option value="es">eastsouth
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="ws">westsouth
+				<option value="w">west
+				<option value="wn" selected>westnorth
+			</select>
+		
+		</TD>
+		<TD>
+			<select name="pop_he_align_inside" id="pop_he_align_inside" size="1" style="display:none;">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="e">east
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="w">west
+				<option value="c">center
+			</select>
+
+			<select name="pop_he_align_outside" id="pop_he_align_outside" size="1">
+				<option value="nw">northwest
+				<option value="n">north
+				<option value="ne">northeast
+				<option value="en">eastnorth
+				<option value="e">east
+				<option value="es">eastsouth
+				<option value="se">southeast
+				<option value="s">south
+				<option value="sw">southwest
+				<option value="ws">westsouth
+				<option value="w">west
+				<option value="wn" selected>westnorth
+			</select>
+		
+		</TD>
+	</TR>
+
+	<TR>
+		<TD><B>Offset</B> (in pixels)</TD>
+		<TD><INPUT TYPE="text" NAME="ss_offset" ID="ss_offset" value="0" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+		<TD><INPUT TYPE="text" NAME="se_offset" ID="se_offset" value="8" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+		<TD><INPUT TYPE="text" NAME="he_offset" ID="he_offset" value="0" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+	</TR>
+	<TR>
+		<TD><B>Margin</B> (in pixels)</TD>
+		<TD><INPUT TYPE="text" NAME="ss_margin" ID="ss_margin" value="-25" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+		<TD><INPUT TYPE="text" NAME="se_margin" ID="se_margin" value="0" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+		<TD><INPUT TYPE="text" NAME="he_margin" ID="he_margin" value="-25" class="offsetmargin" title="Use scroll wheel to increment/decrement"></TD>
+	</TR>
+	<tr><td colspan=4>
+		<INPUT TYPE="checkbox" NAME="useArrows" id="useArrows" checked> <label for="useArrows">Use arrows</label>
+	</td></tr>
+	<tr><td colspan=4>
+		<INPUT TYPE="checkbox" NAME="isModal" id="isModal"> <label for="isModal">Is modal</label>
+	</td></tr>
+	</TABLE>
+
+
+	<H2>License</H2>
+	<p><A HREF="http://en.wikipedia.org/wiki/MIT_License">MIT-style license</A></p>
+
+	<H2>Download</H2>
+	<p><A HREF="AscribeDialog-1.2.zip">AscribeDialog.zip</A> (157KB)</p>
+
+	<H2>Requirements</H2>
+	<UL>
+		<LI><A HREF="http://www.mootools.net/download">MooTools 1.3</A></li>
+		<LI><A HREF="http://www.w3schools.com/xhtml/xhtml_dtd.asp">XHTML Doctype</A> as required by <A HREF="http://docs.mootools.net/Window/Window-Size.js">Mootools Window.Size.js</A></li> 
+	</UL>
+
+	<H2>Acknowledgements</H2>
+	<P><I>Based on <i>Simple class for modal dialog boxes using 1.2b2</i> once shared in the old MooTools forum. Some inspiration from <A HREF="http://extjs.com/deploy/dev/examples/message-box/msg-box.html">ExtJS's message box</A>.</I></p>
+
+	<H2>Comments</H2>
+	<p>Please feel free to comment on this class at the <A HREF="http://forum.mootools.net/viewtopic.php?id=9735">Mootools forum post</A>.</p>
+
+	<div id="ftr">
+		
+		<A HREF="http://www.ascribedata.com/"><IMG SRC="ascribe.png" WIDTH="140" HEIGHT="50" BORDER="0" ALT="Ascribe integrates both member & website management into a single, powerful web-based solution. Empower ministries with online tools to manage information, assign tasks, send email & build community."></A>
+		<p>
+			By <A HREF="http://www.ascribedata.com/" title="Ascribe integrates both member & website management into a single, powerful web-based solution. Empower ministries with online tools to manage information, assign tasks, send email & build community.">Ascribe Data Systems LLC</a>
+			<br>
+			Created by Truman Leung
+			<br>
+			First released: April 15, 2008
+			<br>
+			Second release: October 9, 2010
+		</p>
+	</div>
+
+</DIV>
+
+<script language=javascript src="mootools-core-1.3-full-nocompat.js"></script>
+<script language=javascript src="mootools-1.2.4.4-more.js"></script>
+<script language=javascript src="../Source/dialog.js"></script>
+<script language=javascript src="demo.js"></script>
+
+</BODY>
+</HTML>

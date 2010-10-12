@@ -1,0 +1,97 @@
+body { 
+	background-color: #F8F4E8; 
+	font:14px/1.22 helvetica,Lucida Sans,clean,sans-serif;*font-size:small;*font:x-small; 
+	margin:0;padding:0; 
+	text-align: center;
+}
+
+#container {
+	width: 650px !important;
+	margin: 60px auto 200px auto;
+	text-align: left;
+	padding: 25px 40px 40px 40px;
+
+	background-color: #E8EEF7;
+	border: 4px solid #264E75;
+	position: relative;
+	color: #112335;
+}
+
+#container h1, #container h2, #container h3 { color: #18324B; }
+
+#container td {  text-align: left; }
+#container input.offsetmargin { width: 35px; font-size: 112%; }
+#container p.ctr, #shbtnrow { text-align: center; }
+#container h2.desc { font-size: 134%; color: #336600; font-weight:normal; }
+#shbtnrow { width: 400px; margin: -5px auto 0 auto; }
+
+#container .tip { font-weight:bold; cursor: pointer; color: purple; }
+
+#lotsatips { margin: 0 0 25px 0; }
+#lotsatips .box { 
+	width: 25px;
+	height: 25px;
+	margin: 0 3px 0 0;
+	border: 1px solid #CFCFCF;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-khtml-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	float: left;
+	background-color: #F4F4F4;
+}
+.clr { clear: both; }
+
+#democnt { 
+	width: 396px;
+	height: 283px;
+	background: transparent url(grid.png) no-repeat 50% 50%; 
+	padding: 0; margin: 0px auto 0px auto;  
+	position: relative;
+}
+#smplbox { 
+	width: 292px; 
+	height: 164px; 
+	position: absolute;
+	top: 72px;
+	left: 54px;
+}
+table.modals { margin: 0 auto 10px auto; }
+table.modals td { padding: 0 10px; }
+table.modals input { font-size: 120%; margin: 0; }
+#hide_popup, #show_popup { font-size: 120%; margin: 0 0 15px 0; }
+#modal_sect h3 { text-align: center; }
+#modal_sect p.ctr { margin: 0; }
+p.alert{color:red;}
+
+#shsettings td, #shsettings th { vertical-align: top; padding: 5px;}
+
+#container .demobox {
+	margin: 10px auto;
+	border: 3px solid #336600;
+	background-color: #99CC66;
+	width: 400px;
+	padding: 15px;
+	font-size: 132%;
+	color:#ECFFD9;
+}
+pre { 
+	border: 1px solid #99CC66;
+	background: #D6DEE9;
+	font-size: 92%;
+	color: #336600;
+	padding: 15px;
+	font-weight: normal;
+}
+
+#ftr {
+	width: 350px;
+	text-align: left;
+	padding:0;
+	position: absolute;
+	left: -4px;
+	bottom: -155px;
+	font-size: 92%;
+	color: 444#;
+	z-index: 50;
+}

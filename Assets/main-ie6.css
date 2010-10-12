@@ -1,0 +1,56 @@
+/*
+	for popup
+*/
+.AscPop .AscClose a {
+	background-image: url(box/orange/ie/fileclose.gif);
+	filter:	progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+}
+.AscPop .AscClose a:hover {
+	background-image: url(box/orange/ie/fileclose.gif);
+	filter:	progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+.ModalPop .f .mi {
+	background-image: url(icons/64x64/important.gif);
+}
+.ModalPop .n .mi {
+	background-image: url(icons/64x64/clock.gif);
+}
+.ModalPop .enc .mi {
+	background-image: url(icons/64x64/encrypted.gif);
+}
+.ModalPop .ok .mi {
+	background-image: url(icons/64x64/button_ok.gif);
+}
+/*
+	for session alert modal
+*/
+.SessAlertPop .grid .nw, .SessAlertPop .grid .sw {
+	background-image: url(box/blue/ie/l.png);
+}
+.SessAlertPop .grid .ne, .SessAlertPop .grid .se {
+	background-image: url(box/blue/ie/r.png);
+}
+.SessAlertPop .grid .north, .SessAlertPop .grid .s {
+	background-image: url(box/blue/ie/c.png);
+}
+
+.SessAlertPop .SessAlertClose a {
+	background-image: url(box/blue/ie/fileclose.gif);
+	filter:	progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+}
+.SessAlertPop .SessAlertClose a:hover {
+	filter:	progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+.SessAlertPop .f .mi {
+	background-image: url(icons/64x64/important.gif);
+}
+.SessAlertPop .n .mi {
+	background-image: url(icons/64x64/clock.gif);
+}
+.SessAlertPop .i .mi {
+	background-image: url(icons/64x64/encrypted.gif);
+}
+
+a.form span, a.form-down span, a.form-sm span, a.form-sm-down span {
+	zoom:1;
+}

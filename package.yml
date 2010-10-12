@@ -1,0 +1,7 @@
+name: Ascribe Dialog
+author: trube
+category: Interface
+tags: [dialog, tooltip, modal, window, alert, confirm]
+docs: http://ascribedata.com/moo/dialog/
+demo: http://ascribedata.com/moo/dialog/
+current: 0.3
