@@ -10,8 +10,8 @@ The following examples shows you how to create dialogs and tooltips.
 
 Simple modal dialog targetted to the center of the user's screen.
 
-var modal = new AscModal('Enter a message for the modal here', 'i');
-modal.show();
+	var modal = new AscModal('Enter a message for the modal here', 'i');
+	modal.show();
 
 The second argument is for a css class which you wish to assign to the modal dialog. The class comes with five modal css classes uses different icons. You can customize as you wish. 
 
