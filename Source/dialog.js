@@ -10,10 +10,11 @@ authors:
 requires:
 - core/1.3: '*'
 - more/1.2.4: Fx.Elements
+- more/1.2.4: Element.Measure
 
 provides: Ascribe Dialog
 
-version: 0.3
+version: 0.4
 
 ...
 */
@@ -196,6 +197,8 @@ var AscDialog = new Class({
 		// add table for pop with border graphics
 		this.poptbl = new Element('table',{ 'class':'grid' }).inject(this.pop);
 		this.poptbody = new Element('tbody').inject(this.poptbl);
+		
+		this.poptbltdsizes = {};
 
 		[['nw', 'north', 'ne'],['sw', 's', 'se']].each(function(tds) {
 			this.insertPopTblRow(tds, this.poptbody);
@@ -234,7 +237,10 @@ var AscDialog = new Class({
 		var tr = new Element('tr').inject(tbody);
 		tds.each(function(cls) {
 			var td = new Element('td',{ 'class':cls }).inject(tr);
-		});
+			this.poptbltdsizes[cls] = td.measure(function(){
+			    return this.getSize();
+			});
+		}.bind(this));
 	},
 	addPopArrows: function(){
 		// insert pop arrows into pop if they don't already exist
@@ -258,38 +264,37 @@ var AscDialog = new Class({
 				}).inject(this.pop);
 				var styles = {};
 				
-				var h = arrw.getStyle('height');
-				if (h) h = h.toInt();
-				this.arrow_sizes[d].h = h;
+				var arrsize = arrw.measure(function(){
+				    return this.getSize();
+				});
 				
-				var w = arrw.getStyle('width');
-				if (w) w = w.toInt();
-				this.arrow_sizes[d].w = w;
+				this.arrow_sizes[d].h = arrsize.y;
+				this.arrow_sizes[d].w = arrsize.x;
 
 				switch (d) {
 					case 'n':
 						styles.top='auto';
-						if (typeOf(h)=='number') {
+						if (typeOf(arrsize.y)=='number') {
 							styles.bottom = 0;
-							pop_padding['padding-top'] = h - 1;
+							pop_padding['padding-top'] = arrsize.y - 1;
 						}
 						break;
 					case 's':
-						if (typeOf(h)=='number') {
+						if (typeOf(arrsize.y)=='number') {
 							styles.top = 0;
-							pop_padding['padding-bottom'] = h - 1;
+							pop_padding['padding-bottom'] = arrsize.y - 1;
 						}
 						break;
 					case 'e':
-						if (typeOf(w)=='number') {
+						if (typeOf(arrsize.x)=='number') {
 							styles.left = 0;
-							pop_padding['padding-right'] = w - 1;
+							pop_padding['padding-right'] = arrsize.x - 1;
 						}
 						break;
 					case 'w':
-						if (typeOf(w)=='number') {
+						if (typeOf(arrsize.x)=='number') {
 							styles.right = 0;
-							pop_padding['padding-left'] = w - 1;
+							pop_padding['padding-left'] = arrsize.x - 1;
 						}
 						break;				
 				}
@@ -530,47 +535,41 @@ var AscDialog = new Class({
 				}
 			}
 		}
-		if (width) {
+
+		if (!isNaN(width)) {
 			if ((width != 'auto') && (width>0)) {
 				width = width.toInt();
 			}
 			if (width) {
 				this.poptbl.setStyle('width',width);
 			}
+		} else {
+			this.poptbl.setStyle('width','auto');
 		}
 
 		// determine the width/height of the pop after adding new content to pop
 
-		var was_dn = false;
-		if (this.pop.getStyle('display') == 'none') {
-			was_dn = true;
-			this.pop.setStyle('display', 'block');
-			this.pop.setStyle('visibility', 'visible');
-		}
 		
 		// customize the size of the this.pop based on the contents
+
 		var poptblsize = this.poptbl.measure(function(){
 		    return this.getSize();
 		});
-		var pophw = {
-			'height': poptblsize.y,
-			'width': poptblsize.x
+	
+		if (poptblsize != null) {
+			this.pop.setStyles({
+				'height':  poptblsize.y,
+				'width': poptblsize.x + this.poptbltdsizes.nw.x + this.poptbltdsizes.ne.x
+			});
 		}
-		if (this.options.useArrows) {
-			pophw.height += this.arrow_sizes.n + this.arrow_sizes.s
-			pophw.width += this.arrow_sizes.w + this.arrow_sizes.e
-		}
-		this.pop.setStyles(pophw);
 			
 		this.popsize = this.pop.measure(function(){
 		    return this.getSize();
 		});
+	
 		
 		if (width && (this.popsize.x < width)) {
 			this.popsize.x = width;
-		}
-		if (was_dn) {
-			this.pop.setStyle('display', 'none');
 		}
 	},
 	esc: function(e){
