@@ -68,10 +68,6 @@ var AscDialog = new Class({
 			'keyup': this.esc.bind(this),
 			'resize': function(e){ 
 				this.update(e);
-				if(this.isShowing){
-					this.isShowing = false;
-					this.show();
-				}
 			}.bind(this),
 			'scroll': this.update.bind(this)
 		});
